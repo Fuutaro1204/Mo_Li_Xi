@@ -1,0 +1,340 @@
+:root {
+  --bg1: #0b1220;
+  --bg2: #111b34;
+  --gold: #f6d365;
+  --gold2: #fda085;
+  --text: #eaf0ff;
+  --muted: #a9b5d6;
+
+  --red1: #c10b19;
+  --red2: #7b0710;
+
+  --navy1: #1c2a55;
+  --navy2: #131c3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(
+      1200px 600px at 50% -10%,
+      #233a7a 0%,
+      transparent 55%
+    ),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.wrap {
+  width: min(980px, 100%);
+}
+
+.header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: clamp(20px, 3vw, 28px);
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+.sub {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+button {
+  border: 0;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: #2b1b0f;
+  font-weight: 800;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(246, 211, 101, 0.18);
+  transition: transform 0.08s ease, filter 0.15s ease;
+}
+button:hover {
+  filter: saturate(1.05) brightness(1.02);
+}
+button:active {
+  transform: translateY(1px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 14px;
+}
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+}
+
+.bar {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 13px;
+}
+.bar b {
+  color: var(--text);
+}
+
+/* ================== LÌ XÌ CARD ================== */
+.envelope {
+  position: relative;
+  border-radius: 18px;
+  height: 150px;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, var(--red1), var(--red2));
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+  outline: none;
+}
+.envelope:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.03);
+}
+.envelope:active {
+  transform: translateY(0px) scale(0.995);
+}
+
+/* họa tiết */
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: -30px -30px auto -30px;
+  height: 90px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0)
+  );
+  transform: rotate(-6deg);
+}
+
+.seal {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  right: 14px;
+  top: 14px;
+  background: radial-gradient(circle at 30% 30%, #ffdca8, #e6b04b);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    0 10px 22px rgba(0, 0, 0, 0.22);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #5b3100;
+  letter-spacing: 0.5px;
+}
+.seal span {
+  transform: translateY(-1px);
+}
+
+.label {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  right: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.title {
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+.hint {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+}
+
+/* ================== “TỜ TIỀN” / KẾT QUẢ ================== */
+.money {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  height: 120px;
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  /* ban đầu ẩn + nằm thấp */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.25s ease, transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1);
+  pointer-events: none;
+}
+.money .amount {
+  font-size: clamp(22px, 2.8vw, 30px);
+  font-weight: 1000;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.money .note {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ================== HIỆU ỨNG “XÉ BAO” ================== */
+/* Miệng bao (flap) */
+.flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 62px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.12),
+    rgba(255, 255, 255, 0.06)
+  );
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.25s ease;
+  pointer-events: none;
+}
+
+/* Đường rách (tear line) */
+.tear-line {
+  position: absolute;
+  left: -10%;
+  top: 58px;
+  width: 120%;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0px,
+    rgba(255, 255, 255, 0) 8px,
+    rgba(255, 255, 255, 0.18) 8px,
+    rgba(255, 255, 255, 0.18) 12px
+  );
+  filter: blur(0.2px);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+/* Mảnh giấy vụn */
+.confetti {
+  position: absolute;
+  top: 58px;
+  width: 10px;
+  height: 8px;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(-10px) rotate(0deg);
+  pointer-events: none;
+}
+
+/* Khi đang “xé” */
+.envelope.ripping {
+  filter: brightness(1.08);
+}
+.envelope.ripping .tear-line {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Khi đã “mở” */
+.envelope.revealed {
+  background: linear-gradient(180deg, var(--navy1), var(--navy2));
+  cursor: default;
+}
+.envelope.revealed:hover {
+  transform: none;
+  filter: none;
+}
+
+.envelope.revealed .label .hint {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* flap bật lên */
+.envelope.revealed .flap {
+  transform: rotateX(72deg);
+  opacity: 0.75;
+}
+
+/* “tờ tiền” trượt lên + hiện */
+.envelope.revealed .money {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* confetti bay */
+.envelope.revealed .confetti {
+  animation: confetti-fall 700ms ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translate(var(--dx, 0px), -10px) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx, 0px), 90px) rotate(260deg);
+  }
+}
+/* Ẩn chữ "Bao lì xì #..." sau khi mở */
+.envelope.revealed .label .title {
+  display: none;
+}
+
+/* (Tuỳ chọn) Nếu muốn ẩn luôn cả hint "Đã mở" */
+/* .envelope.revealed .label{
+  display: none;
+} */
