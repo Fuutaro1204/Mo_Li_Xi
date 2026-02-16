@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mở Lì Xì</title>
+    <link rel="stylesheet" href="./Style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="header">
+        <div>
+          <h1>🧧 Mở Lì Xì</h1>
+          <p class="sub">
+            Có 8 bao — mệnh giá được xáo ngẫu nhiên. Nhấp vào bao để mở (xé
+            bao).
+          </p>
+        </div>
+        <div class="btns">
+          <button id="resetBtn" type="button">Xáo lại &amp; chơi lại</button>
+        </div>
+      </header>
+
+      <main class="grid" id="grid"></main>
+
+      <div class="bar">
+        <div>Đã mở: <b id="openedCount">0</b>/8</div>
+        <div>Tổng tiền đã mở: <b id="openedSum">0</b> VNĐ</div>
+      </div>
+    </div>
+
+    <script src="./App.js"></script>
+  </body>
+</html>
